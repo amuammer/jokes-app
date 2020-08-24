@@ -61,6 +61,7 @@ app.get("/random", (req, res, next) => {
     }).catch((e) => next(e));
 });
 
+// update joke
 app.put("/jokes/:id", (req, res) => {
   const { id } = req.params;
   const {
@@ -72,8 +73,8 @@ app.put("/jokes/:id", (req, res) => {
   });
 });
 
+// delete joke from api
 app.delete("/jokes/:id", (req, res) => {
-  console.log("delete");
   const { id } = req.params;
   const sql = "delete from jokes where id =$1;";
   client.query(sql, [id]).then(() => {
@@ -81,17 +82,8 @@ app.delete("/jokes/:id", (req, res) => {
   });
 });
 
+// add joke to db
 app.post("/jokes", (req, res) => {
-  const {
-    number, type, setup, punchline,
-  } = req.body;
-  const sql = "insert into jokes(id, type, setup, punchline) values($1, $2, $3, $4);";
-  client.query(sql, [number, type, setup, punchline]).then(() => {
-    res.redirect("/favorite");
-  });
-});
-
-app.put("/jokes/:id", (req, res) => {
   const {
     number, type, setup, punchline,
   } = req.body;
