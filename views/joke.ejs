@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title>DETAILS</title>
+  <%- include("partials/head.ejs") %>
+</head>
+  <body>
+    <%- include("partials/header.ejs") %>
+      <h4> <%= joke.type %></h4>
+      <h4> <%= joke.setup %></h4>
+      <h4> <%= joke.punchline %></h4>
+      <form class="" action="/jokes/<%= joke.number %>?_method=PUT" method="POST">
+        <input type="text" name="type" value="<%= joke.type %>">
+        <br/>
+        <input type="text" name="setup" value="<%= joke.setup %>">
+        <br/>
+        <input type="text" name="punchline" value="<%= joke.punchline %>">
+        <br/>
+        <input type="submit" value="UPDATE" />
+      </form>
+      <a href="/jokes/<%= joke.number %>?_method=DELETE"><button>DELETE</button></a>
+      <%- include("partials/footer.ejs") %>
+  </body>
+</html>

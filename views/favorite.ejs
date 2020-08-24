@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>favorite jokes</title>
+    <%- include("partials/head.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %>
+    <% if(jokes.length) { %>
+      <% jokes.forEach((joke, i) => { %>
+        <h4> <%= joke.type %></h4>
+        <h4> <%= joke.setup %></h4>
+        <h4> <%= joke.punchline %></h4>
+        <a href=<%= `/jokes/${joke.number}` %>><button>VIEW DETAILS</button></a>
+      <% }) %>
+      <% } else { %>
+        <h1> no available jokes </h1>
+      <% } %>
+      <%- include("partials/footer.ejs") %>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Home</title>
+    <%- include("partials/head.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %>
+    <% jokes.forEach((joke, i) => { %>
+      <h4> Joke #<%= (i+1) %></h4>
+      <h4> <%= joke.type %></h4>
+      <h4> <%= joke.setup %></h4>
+      <h4> <%= joke.punchline %></h4>
+      <form class="" action="/jokes" method="post">
+        <input type="text" name="number" hidden value="<%= joke.number %>">
+        <input type="text" name="type" hidden value="<%= joke.type %>">
+        <input type="text" name="setup" hidden value="<%= joke.setup %>">
+        <input type="text" name="punchline" hidden value="<%= joke.punchline %>">
+        <input type="submit" value="ADD TO MY JOKES LIST" />
+      </form>
+    <% }) %>
+    <%- include("partials/footer.ejs") %>
+  </body>
+</html>
